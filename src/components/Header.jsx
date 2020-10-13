@@ -1,5 +1,4 @@
 import React, { Component, useEffect, useState } from "react";
-import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import BUEHeaderLogo from "../logos/BUE-logo.png";
 import BritishFlag from "../logos/BritishFLag.png";
@@ -11,13 +10,11 @@ import {
   Menu,
   MenuItem,
   FormGroup,
-  FormControlLabel,
   IconButton,
   Typography,
   Toolbar,
   AppBar,
   makeStyles,
-  CardMedia,
 } from "@material-ui/core";
 
 function Header() {
@@ -29,6 +26,14 @@ function Header() {
       "&:hover": {
         color: "red",
       },
+    },
+    HeaderImg: {
+      boxShadow: "0 60px 5px 2px rgb(228,159,172,0.35)",
+      borderTop: "1px solid black",
+      height: "100px",
+      marginTop: "0",
+      width: "100%",
+      backgroundImage: "url(" + Signing + ")",
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -110,12 +115,9 @@ function Header() {
           </div>
         </Toolbar>
       </AppBar>
-      <CardMedia
-        hover
-        className={classes.visuallyHidden}
-        image={Signing}
-        style={{ height: "100px" }}
-      ></CardMedia>
+      <div className={classes.HeaderImg}>
+        <h1 style={{ textAlign: "center", color: "white" }}>Q&V Portal</h1>
+      </div>
     </div>
   );
 }
