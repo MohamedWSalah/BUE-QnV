@@ -1,0 +1,11 @@
+.MuiStepIcon-root {
+  color: grey !important;
+}
+
+.MuiStepIcon-root.MuiStepIcon-active {
+  color: red !important;
+}
+
+.MuiStepIcon-root.MuiStepIcon-completed {
+  color: green !important;
+}

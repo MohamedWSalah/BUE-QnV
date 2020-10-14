@@ -2,7 +2,8 @@ import React, { Component, useEffect, useState } from "react";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import BUEHeaderLogo from "../logos/BUE-logo.png";
 import BritishFlag from "../logos/BritishFLag.png";
-import Signing from "../logos/signing2.jpg";
+import Signing from "../logos/signing3.jpg";
+
 import {
   Avatar,
   Button,
@@ -34,6 +35,18 @@ function Header() {
       marginTop: "0",
       width: "100%",
       backgroundImage: "url(" + Signing + ")",
+      backgroundColor: "rgba(0, 0, 0, 0.6)",
+      position: "relative",
+      top: 0,
+      left: 0,
+    },
+    layer: {
+      backgroundColor: "rgba(0, 0, 0, 0.6)",
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -116,7 +129,10 @@ function Header() {
         </Toolbar>
       </AppBar>
       <div className={classes.HeaderImg}>
-        <h1 style={{ textAlign: "center", color: "white" }}>Q&V Portal</h1>
+        <div className={classes.layer}>
+          <h1 style={{ textAlign: "center", color: "white" }}>Q&V Portal</h1>
+          <div></div>
+        </div>
       </div>
     </div>
   );
