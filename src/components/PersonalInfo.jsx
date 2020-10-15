@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import DropzoneDialogD from "./Upload";
 import {
   Grid,
   MenuItem,
@@ -306,36 +307,11 @@ function PersonalInfo(props) {
             style={{ marginLeft: "15vw" }}
           >
             <p className={classes.parag}>Required Files(NotDoneYet)</p>
-            <form className={classes.root} noValidate autoComplete="off">
-              <TextField
-                className={classes.textFieldAuto}
-                id="outlined-basic"
-                label="First name"
-                variant="outlined"
-                size="small"
-              />
-              <TextField
-                className={classes.textFieldAuto}
-                id="outlined-basic"
-                label="Middle name"
-                variant="outlined"
-                size="small"
-              />
-              <TextField
-                className={classes.textFieldAuto}
-                id="outlined-basic"
-                label="Last name"
-                variant="outlined"
-                size="small"
-              />
-              <TextField
-                className={classes.textFieldAuto}
-                id="outlined-basic"
-                label="Date of Birth"
-                variant="outlined"
-                size="small"
-              />
-            </form>
+            <div className={classes.root} noValidate autoComplete="off">
+              <DropzoneDialogD className={classes.textFieldAuto} />
+              <DropzoneDialogD className={classes.textFieldAuto} />
+              <DropzoneDialogD className={classes.textFieldAuto} />
+            </div>
           </Paper>
         </Grid>
         {/*=====================Address and Country======================*/}
