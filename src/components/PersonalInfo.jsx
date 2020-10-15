@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import DropzoneDialogD from "./Upload";
+
 import {
   Grid,
   MenuItem,
@@ -28,7 +29,8 @@ const useStyles = makeStyles((theme) => ({
   },
   gridCustom: { paddingLeft: "10px", marginTop: "20px" },
   paperC: {
-    width: "65%",
+    width: "90%",
+    height: "100%",
   },
   textFieldAuto: {
     width: "40%",
@@ -46,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
 
 function PersonalInfo(props) {
   const classes = useStyles();
+  const { personalInfoTest } = props;
   const [personalInfoState, setPInfoState] = useState({
     firstName: "1",
     middleName: "12",
@@ -59,29 +62,26 @@ function PersonalInfo(props) {
     secondMobileNumber: "",
     Landline: "",
     email: "",
-    verifyEmail: "",
     RCountry: "",
     city: "",
     street: "",
     zipcode: "",
-
-    successMessage: null,
-    errors: "",
   });
 
   const handleChange = (event) => {
     setPInfoState(event.target.value);
   };
+
   return (
     <center>
       <Grid container spacing={0}>
-        <Grid item xs={6} className={classes.gridCustom}>
+        <Grid item md={6} sm={12} className={classes.gridCustom}>
           <Paper
             label="Name"
             square={false}
             variant={"outlined"}
             className={classes.paperC}
-            style={{ marginLeft: "15vw" }}
+            //style={{ marginLeft: "15vw" }}
           >
             <p className={classes.parag}>Personal Info</p>
             <form className={classes.root} noValidate autoComplete="off">
@@ -160,7 +160,12 @@ function PersonalInfo(props) {
                 className={classes.textFieldAuto}
                 size="small"
               >
-                <InputLabel id="outlined-label">Gender</InputLabel>
+                <InputLabel
+                  id="outlined-label"
+                  style={{ backgroundColor: "white" }}
+                >
+                  Gender
+                </InputLabel>
                 <Select
                   labelId="outlined-label"
                   id="outlined"
@@ -183,7 +188,12 @@ function PersonalInfo(props) {
                 className={classes.textFieldAuto}
                 size="small"
               >
-                <InputLabel id="outlined-label">ID Type</InputLabel>
+                <InputLabel
+                  id="outlined-label"
+                  style={{ backgroundColor: "white" }}
+                >
+                  ID Type
+                </InputLabel>
                 <Select
                   labelId="outlined-label"
                   id="outlined"
@@ -221,12 +231,12 @@ function PersonalInfo(props) {
           </Paper>
         </Grid>
         {/*========================ContactInfo==========================*/}
-        <Grid item xs={6} className={classes.gridCustom}>
+        <Grid item md={6} sm={12} className={classes.gridCustom}>
           <Paper
             square={false}
             variant={"outlined"}
             className={classes.paperC}
-            style={{ marginRight: "15vw" }}
+            //style={{ marginRight: "15vw" }}
           >
             <p className={classes.parag}>Contact Info</p>
             <form className={classes.root} noValidate autoComplete="off">
@@ -282,48 +292,7 @@ function PersonalInfo(props) {
                   });
                 }}
               />
-              <TextField
-                className={classes.textFieldAuto}
-                id="outlined-basic"
-                label="Verify Email address"
-                variant="outlined"
-                size="small"
-                onChange={(e) => {
-                  setPInfoState({
-                    ...personalInfoState,
-                    verifyEmail: e.target.value,
-                  });
-                }}
-              />
-            </form>
-          </Paper>
-        </Grid>
-        {/*=====================Required Files======================*/}
-        <Grid item xs={6} className={classes.gridCustom}>
-          <Paper
-            square={false}
-            variant={"outlined"}
-            className={classes.paperC}
-            style={{ marginLeft: "15vw" }}
-          >
-            <p className={classes.parag}>Required Files(NotDoneYet)</p>
-            <div className={classes.root} noValidate autoComplete="off">
-              <DropzoneDialogD className={classes.textFieldAuto} />
-              <DropzoneDialogD className={classes.textFieldAuto} />
-              <DropzoneDialogD className={classes.textFieldAuto} />
-            </div>
-          </Paper>
-        </Grid>
-        {/*=====================Address and Country======================*/}
-        <Grid item xs={6} className={classes.gridCustom}>
-          <Paper
-            square={false}
-            variant={"outlined"}
-            className={classes.paperC}
-            style={{ marginRight: "15vw" }}
-          >
-            <p className={classes.parag}>Address and Country</p>
-            <form className={classes.root} noValidate autoComplete="off">
+
               <TextField
                 className={classes.textFieldAuto}
                 id="outlined-basic"
@@ -377,6 +346,76 @@ function PersonalInfo(props) {
                 }}
               />
             </form>
+          </Paper>
+        </Grid>
+        {/*=====================Required Files======================*/}
+        <Grid
+          item
+          md={4}
+          sm={12}
+          className={classes.gridCustom}
+          style={{ width: "100%" }}
+        >
+          <Paper
+            square={false}
+            variant={"outlined"}
+            className={classes.paperC}
+
+            //style={{ marginLeft: "15vw" }}
+          >
+            <p className={classes.parag}>Birth Certificate</p>
+            <div className={classes.root} noValidate autoComplete="off">
+              {/*<DropzoneDialogD className={classes.textFieldAuto} />*/}
+              <DropzoneDialogD
+                dropZoneText={
+                  "Drag and drop your Birth Certificate here or click"
+                }
+              />
+            </div>
+          </Paper>
+        </Grid>
+        <Grid
+          item
+          md={4}
+          sm={12}
+          className={classes.gridCustom}
+          style={{ width: "100%" }}
+        >
+          <Paper
+            square={false}
+            variant={"outlined"}
+            className={classes.paperC}
+            //style={{ marginLeft: "15vw" }}
+          >
+            <p className={classes.parag}>Personal Photo</p>
+            <div className={classes.root} noValidate autoComplete="off">
+              <DropzoneDialogD
+                dropZoneText={"Drag and drop your Personal Photo here or click"}
+              />
+            </div>
+          </Paper>
+        </Grid>
+        <Grid
+          item
+          md={4}
+          sm={12}
+          className={classes.gridCustom}
+          style={{ width: "100%" }}
+        >
+          <Paper
+            square={false}
+            variant={"outlined"}
+            className={classes.paperC}
+            //style={{ marginLeft: "15vw" }}
+          >
+            <p className={classes.parag}> ID</p>
+            <div className={classes.root} noValidate autoComplete="off">
+              <DropzoneDialogD
+                dropZoneText={
+                  "Drag and drop your Identification photo here or click"
+                }
+              />
+            </div>
           </Paper>
         </Grid>
       </Grid>

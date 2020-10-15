@@ -41,11 +41,11 @@ function getStepContent(stepIndex) {
   }
 }
 
-export default function HorizontalLabelPositionBelowStepper() {
+export default function HorizontalLabelPositionBelowStepper(props) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
-
+  const personalInfoTest = {};
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -69,7 +69,7 @@ export default function HorizontalLabelPositionBelowStepper() {
       return <h1>3333</h1>;
     }
   };
-  console.log(activeStep);
+  console.log("Step number ", activeStep);
   return (
     <div className={classes.root}>
       <Stepper activeStep={activeStep} alternativeLabel>
