@@ -1,7 +1,14 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import { Grid } from "@material-ui/core";
+import {
+  Grid,
+  MenuItem,
+  Select,
+  InputLabel,
+  FormControl,
+  Button,
+} from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import "../App.css";
 const useStyles = makeStyles((theme) => ({
@@ -23,7 +30,9 @@ const useStyles = makeStyles((theme) => ({
     width: "65%",
   },
   textFieldAuto: {
-    width: "auto",
+    width: "40%",
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
   },
   parag: {
     position: "relative",
@@ -34,8 +43,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function PersonalInfo() {
+function PersonalInfo(props) {
   const classes = useStyles();
+  const [personalInfoState, setPInfoState] = useState({
+    firstName: "1",
+    middleName: "12",
+    lastName: "",
+    dateOfBirth: "",
+    country: "",
+    gender: "",
+    idType: "",
+    idNumber: "",
+    mobileNumber: "",
+    secondMobileNumber: "",
+    Landline: "",
+    email: "",
+    verifyEmail: "",
+    RCountry: "",
+    city: "",
+    street: "",
+    zipcode: "",
+
+    successMessage: null,
+    errors: "",
+  });
+
+  const handleChange = (event) => {
+    setPInfoState(event.target.value);
+  };
   return (
     <center>
       <Grid container spacing={0}>
@@ -55,13 +90,26 @@ function PersonalInfo() {
                 label="First name"
                 variant="outlined"
                 size="small"
+                onChange={(e) => {
+                  setPInfoState({
+                    ...personalInfoState,
+                    firstName: e.target.value,
+                  });
+                }}
               />
+
               <TextField
                 className={classes.textFieldAuto}
                 id="outlined-basic"
-                label={"Middle name"}
+                label="Middle name"
                 variant="outlined"
                 size="small"
+                onChange={(e) => {
+                  setPInfoState({
+                    ...personalInfoState,
+                    middleName: e.target.value,
+                  });
+                }}
               />
               <TextField
                 className={classes.textFieldAuto}
@@ -69,17 +117,109 @@ function PersonalInfo() {
                 label="Last name"
                 variant="outlined"
                 size="small"
+                onChange={(e) => {
+                  setPInfoState({
+                    ...personalInfoState,
+                    lastName: e.target.value,
+                  });
+                }}
               />
               <TextField
                 className={classes.textFieldAuto}
                 id="outlined-basic"
-                label="Gender"
+                label="Date of birth"
+                variant="outlined"
+                type="date"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                size="small"
+                onChange={(e) => {
+                  setPInfoState({
+                    ...personalInfoState,
+                    dateOfBirth: e.target.value,
+                  });
+                }}
+              />
+              <TextField
+                className={classes.textFieldAuto}
+                id="outlined-basic"
+                label="Country Citizenship"
                 variant="outlined"
                 size="small"
+                onChange={(e) => {
+                  setPInfoState({
+                    ...personalInfoState,
+                    country: e.target.value,
+                  });
+                }}
+              />
+              <FormControl
+                variant="outlined"
+                className={classes.textFieldAuto}
+                size="small"
+              >
+                <InputLabel id="outlined-label">Gender</InputLabel>
+                <Select
+                  labelId="outlined-label"
+                  id="outlined"
+                  value={personalInfoState.gender}
+                  style={{ width: "100%" }}
+                  onChange={(e) => {
+                    setPInfoState({
+                      ...personalInfoState,
+                      gender: e.target.value,
+                    });
+                  }}
+                >
+                  <MenuItem value={"Male"}>Male</MenuItem>
+                  <MenuItem value={"Female"}>Female</MenuItem>
+                </Select>
+              </FormControl>
+
+              <FormControl
+                variant="outlined"
+                className={classes.textFieldAuto}
+                size="small"
+              >
+                <InputLabel id="outlined-label">ID Type</InputLabel>
+                <Select
+                  labelId="outlined-label"
+                  id="outlined"
+                  value={personalInfoState.idType}
+                  style={{ width: "100%" }}
+                  onChange={(e) => {
+                    setPInfoState({
+                      ...personalInfoState,
+                      idType: e.target.value,
+                    });
+                  }}
+                >
+                  <MenuItem value=""></MenuItem>
+                  <MenuItem value={"Passport"}>Passport</MenuItem>
+                  <MenuItem value={"IdentificationCard"}>
+                    IdentificationCard
+                  </MenuItem>
+                </Select>
+              </FormControl>
+
+              <TextField
+                className={classes.textFieldAuto}
+                id="outlined-basic"
+                label="ID number"
+                variant="outlined"
+                size="small"
+                onChange={(e) => {
+                  setPInfoState({
+                    ...personalInfoState,
+                    idNumber: e.target.value,
+                  });
+                }}
               />
             </form>
           </Paper>
         </Grid>
+        {/*========================ContactInfo==========================*/}
         <Grid item xs={6} className={classes.gridCustom}>
           <Paper
             square={false}
@@ -87,47 +227,85 @@ function PersonalInfo() {
             className={classes.paperC}
             style={{ marginRight: "15vw" }}
           >
-            <p className={classes.parag}>Personal Info</p>
+            <p className={classes.parag}>Contact Info</p>
             <form className={classes.root} noValidate autoComplete="off">
               <TextField
                 className={classes.textFieldAuto}
                 id="outlined-basic"
-                label="First name"
+                label="Mobile Number"
                 variant="outlined"
                 size="small"
+                onChange={(e) => {
+                  setPInfoState({
+                    ...personalInfoState,
+                    mobileNumber: e.target.value,
+                  });
+                }}
               />
               <TextField
                 className={classes.textFieldAuto}
                 id="outlined-basic"
-                label="Middle name"
+                label="2nd Mobile No"
                 variant="outlined"
                 size="small"
+                onChange={(e) => {
+                  setPInfoState({
+                    ...personalInfoState,
+                    secondMobileNumber: e.target.value,
+                  });
+                }}
               />
               <TextField
                 className={classes.textFieldAuto}
                 id="outlined-basic"
-                label="Last name"
+                label="Landline"
                 variant="outlined"
                 size="small"
+                onChange={(e) => {
+                  setPInfoState({
+                    ...personalInfoState,
+                    Landline: e.target.value,
+                  });
+                }}
               />
               <TextField
                 className={classes.textFieldAuto}
                 id="outlined-basic"
-                label="Date of Birth"
+                label="Email address"
                 variant="outlined"
                 size="small"
+                onChange={(e) => {
+                  setPInfoState({
+                    ...personalInfoState,
+                    email: e.target.value,
+                  });
+                }}
+              />
+              <TextField
+                className={classes.textFieldAuto}
+                id="outlined-basic"
+                label="Verify Email address"
+                variant="outlined"
+                size="small"
+                onChange={(e) => {
+                  setPInfoState({
+                    ...personalInfoState,
+                    verifyEmail: e.target.value,
+                  });
+                }}
               />
             </form>
           </Paper>
         </Grid>
-        <Grid item xs={6} className={classes.gridCustom} y>
+        {/*=====================Required Files======================*/}
+        <Grid item xs={6} className={classes.gridCustom}>
           <Paper
             square={false}
             variant={"outlined"}
             className={classes.paperC}
             style={{ marginLeft: "15vw" }}
           >
-            <p className={classes.parag}>Personal Info</p>
+            <p className={classes.parag}>Required Files(NotDoneYet)</p>
             <form className={classes.root} noValidate autoComplete="off">
               <TextField
                 className={classes.textFieldAuto}
@@ -160,47 +338,81 @@ function PersonalInfo() {
             </form>
           </Paper>
         </Grid>
-        <Grid item xs={6} className={classes.gridCustom} y>
+        {/*=====================Address and Country======================*/}
+        <Grid item xs={6} className={classes.gridCustom}>
           <Paper
             square={false}
             variant={"outlined"}
             className={classes.paperC}
             style={{ marginRight: "15vw" }}
           >
-            <p className={classes.parag}>Personal Info</p>
+            <p className={classes.parag}>Address and Country</p>
             <form className={classes.root} noValidate autoComplete="off">
               <TextField
                 className={classes.textFieldAuto}
                 id="outlined-basic"
-                label="First name"
+                label="Residence Country"
                 variant="outlined"
                 size="small"
+                onChange={(e) => {
+                  setPInfoState({
+                    ...personalInfoState,
+                    RCountry: e.target.value,
+                  });
+                }}
               />
               <TextField
                 className={classes.textFieldAuto}
                 id="outlined-basic"
-                label="Middle name"
+                label="City"
                 variant="outlined"
                 size="small"
+                onChange={(e) => {
+                  setPInfoState({
+                    ...personalInfoState,
+                    city: e.target.value,
+                  });
+                }}
               />
               <TextField
                 className={classes.textFieldAuto}
                 id="outlined-basic"
-                label="Last name"
+                label="Street"
                 variant="outlined"
                 size="small"
+                onChange={(e) => {
+                  setPInfoState({
+                    ...personalInfoState,
+                    street: e.target.value,
+                  });
+                }}
               />
               <TextField
                 className={classes.textFieldAuto}
                 id="outlined-basic"
-                label="Date of Birth"
+                label="Zip/PostalCode"
                 variant="outlined"
                 size="small"
+                onChange={(e) => {
+                  setPInfoState({
+                    ...personalInfoState,
+                    zipcode: e.target.value,
+                  });
+                }}
               />
             </form>
           </Paper>
         </Grid>
       </Grid>
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={() => {
+          console.log(personalInfoState);
+        }}
+      >
+        TEST BUTTON!!
+      </Button>
     </center>
   );
 }

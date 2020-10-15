@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import React from "react";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import BUEHeaderLogo from "../logos/BUE-logo.png";
 import BritishFlag from "../logos/BritishFLag.png";
