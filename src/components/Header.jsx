@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from "react";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import BUEHeaderLogo from "../logos/BUE-logo.png";

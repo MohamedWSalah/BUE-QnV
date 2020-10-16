@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import DropzoneDialogD from "./Upload";
+import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 
 import {
   Grid,
@@ -13,6 +14,7 @@ import {
 } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import "../App.css";
+import { common } from "@material-ui/core/colors";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -43,12 +45,13 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "white",
     display: "inline",
     height: "auto",
+    fontWeight: "bold",
   },
 }));
 
 function PersonalInfo(props) {
   const classes = useStyles();
-  const { personalInfoTest } = props;
+  const { onNext, onBack, activeStep, steps } = props;
   const [personalInfoState, setPInfoState] = useState({
     firstName: "1",
     middleName: "12",
@@ -72,6 +75,15 @@ function PersonalInfo(props) {
     setPInfoState(event.target.value);
   };
 
+  const submitForm = () => {
+    //validation
+    //send > to api
+    onNext();
+    console.log(personalInfoState);
+  };
+  //submitform , check if the form is valiated
+  //send the data to the API ( if found)
+  //call On Next
   return (
     <center>
       <Grid container spacing={0}>
@@ -419,15 +431,25 @@ function PersonalInfo(props) {
           </Paper>
         </Grid>
       </Grid>
-      <Button
-        variant="contained"
-        color="secondary"
-        onClick={() => {
-          console.log(personalInfoState);
-        }}
-      >
-        TEST BUTTON!!
-      </Button>
+
+      <div style={{ paddingTop: "20px" }}>
+        <Button
+          disabled={activeStep === 0}
+          onClick={onBack}
+          className={classes.backButton}
+        >
+          Back
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={submitForm}
+          style={{ backgroundColor: "red" }}
+          endIcon={<ArrowRightIcon />}
+        >
+          {activeStep === steps.length - 1 ? "Finish" : "Next"}
+        </Button>
+      </div>
     </center>
   );
 }

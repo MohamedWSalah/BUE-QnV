@@ -9,6 +9,9 @@ import Paper from "@material-ui/core/Paper";
 
 import Typography from "@material-ui/core/Typography";
 import PersonalInfo from "./PersonalInfo";
+import AcademicInfo from "./AcademicInfo";
+import ProgramSelection from "./ProgramSelection";
+
 import "../Body.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,6 +24,11 @@ const useStyles = makeStyles((theme) => ({
   instructions: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
+    color: "red",
+  },
+  paperC: {
+    width: "20%",
+    height: "100%",
   },
 }));
 
@@ -46,6 +54,7 @@ export default function HorizontalLabelPositionBelowStepper(props) {
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
   const personalInfoTest = {};
+
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -60,13 +69,34 @@ export default function HorizontalLabelPositionBelowStepper(props) {
 
   const formRenderNumber = (num) => {
     if (num === 0) {
-      return <PersonalInfo></PersonalInfo>;
+      return (
+        <PersonalInfo
+          onNext={handleNext}
+          onBack={handleBack}
+          activeStep={activeStep}
+          steps={steps}
+        />
+      );
     }
     if (num === 1) {
-      return <h1>222</h1>;
+      return (
+        <AcademicInfo
+          onNext={handleNext}
+          onBack={handleBack}
+          activeStep={activeStep}
+          steps={steps}
+        />
+      );
     }
     if (num === 2) {
-      return <h1>3333</h1>;
+      return (
+        <ProgramSelection
+          onNext={handleNext}
+          onBack={handleBack}
+          activeStep={activeStep}
+          steps={steps}
+        />
+      );
     }
   };
   console.log("Step number ", activeStep);
@@ -83,11 +113,19 @@ export default function HorizontalLabelPositionBelowStepper(props) {
 
       <div style={{ marginTop: "15px" }}>
         {activeStep === steps.length ? (
-          <div>
-            <Typography className={classes.instructions}>
-              All steps completed
-            </Typography>
-            <Button onClick={handleReset}>Reset</Button>
+          <div style={{ minHeight: "15vw" }}>
+            <center>
+              <Paper
+                label="Name"
+                square={false}
+                variant={"outlined"}
+                className={classes.paperC}
+                style={{ marginTop: "10vw" }}
+              >
+                <p>Your form has been submitted</p>
+                <p>We will contact you shortly</p>
+              </Paper>
+            </center>
           </div>
         ) : (
           <div>
@@ -99,24 +137,7 @@ export default function HorizontalLabelPositionBelowStepper(props) {
                 alignItems="center"
                 item
                 xs={12}
-              >
-                <Button
-                  disabled={activeStep === 0}
-                  onClick={handleBack}
-                  className={classes.backButton}
-                >
-                  Back
-                </Button>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleNext}
-                  style={{ backgroundColor: "red" }}
-                  endIcon={<ArrowRightIcon />}
-                >
-                  {activeStep === steps.length - 1 ? "Finish" : "Next"}
-                </Button>
-              </Grid>
+              ></Grid>
             </div>
           </div>
         )}
