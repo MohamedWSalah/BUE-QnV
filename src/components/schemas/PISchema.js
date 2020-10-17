@@ -9,7 +9,7 @@ function validationJOI(object) {
     country: Joi.string(),
     gender: Joi.string(),
     idType: Joi.string(),
-    idNumber: Joi.string().min(10).max(18),
+    idNumber: Joi.string(),
     mobileNumber: Joi.string(),
     secondMobileNumber: Joi.string(),
     Landline: Joi.string(),

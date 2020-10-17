@@ -42,22 +42,33 @@ function Footer() {
           <p style={{ color: "white" }}>
             Get connected to us though our social media
           </p>
-          <img
-            src={facebookLogo}
-            style={{
-              height: 40,
-              paddingBottom: "20px",
-              paddingRight: "1%",
-            }}
-          />
-          <img
-            src={linkedinLogo}
-            style={{
-              height: 40,
-              paddingBottom: "20px",
-              paddingRight: "1%",
-            }}
-          />
+          <a
+            href="https://www.facebook.com/BUESoftwareProductionUnit"
+            target="_blank"
+          >
+            <img
+              src={facebookLogo}
+              style={{
+                height: 40,
+                paddingBottom: "20px",
+                paddingRight: "1%",
+              }}
+            />
+          </a>
+          <a
+            href="https://www.linkedin.com/company/bue-software-production-unit/"
+            target="_blank"
+          >
+            <img
+              src={linkedinLogo}
+              style={{
+                height: 40,
+                paddingBottom: "20px",
+                paddingRight: "1%",
+              }}
+            />
+          </a>
+
           <img
             src={instaLogo}
             style={{

@@ -86,30 +86,27 @@ function PersonalInfo(props) {
     });
   };
 
-  const validates = () => {
-    const result = validationJOI(personalInfoState);
+  // const validates = () => {
+  //   const result = validationJOI(personalInfoState);
 
-    if (!result.error) return true;
-    var i = 0;
-    const newObj = {};
+  //   if (!result.error) return true;
+  //   var i = 0;
+  //   const newObj = {};
 
-    for (let item of result.error.details) {
-      var x = result.error.details[i].path[0];
+  //   for (let item of result.error.details) {
+  //     var x = result.error.details[i].path[0];
 
-      newObj[x] = true;
-      i++;
-    }
-    setErrors(newObj);
-    return false;
-  };
+  //     newObj[x] = true;
+  //     i++;
+  //   }
+  //   setErrors(newObj);
+  //   return false;
+  // };
 
   const submitForm = () => {
-    //submitform , check if the form is valiated
-    //send the data to the API ( if found)
-    //call On Next
-    let cont = validates();
-    if (cont === true) onNext();
-    //onNext();
+    // let cont = validates();
+    // if (cont === true) onNext();
+    onNext();
   };
   return (
     <center>
