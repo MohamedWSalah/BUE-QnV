@@ -5,6 +5,8 @@ import BUEHeaderLogo from "../logos/BUE-logo.png";
 import BritishFlag from "../logos/BritishFLag.png";
 import Signing from "../logos/signing3.jpg";
 
+import Drawer from "@material-ui/core/Drawer";
+
 import {
   Avatar,
   Button,
@@ -92,12 +94,6 @@ function Header() {
           </Typography>
 
           <div>
-            <IconButton
-              style={{ width: "40px", height: "40px", paddingright: "100px" }}
-            >
-              <Avatar src={BritishFlag} style={{ height: 40, width: 40 }} />
-            </IconButton>
-
             <IconButton
               style={{ color: "black", width: "40px", height: "40px" }}
               aria-label="account of current user"

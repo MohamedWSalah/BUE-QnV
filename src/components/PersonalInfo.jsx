@@ -3,7 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import DropzoneDialogD from "./Upload";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
-
+import Joi, { errors, join } from "joi-browser";
+import validationJOI from "./schemas/PISchema";
 import {
   Grid,
   MenuItem,
@@ -15,6 +16,8 @@ import {
 import Paper from "@material-ui/core/Paper";
 import "../App.css";
 import { common } from "@material-ui/core/colors";
+import CountrySelect from "./Countries";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -52,9 +55,10 @@ const useStyles = makeStyles((theme) => ({
 function PersonalInfo(props) {
   const classes = useStyles();
   const { onNext, onBack, activeStep, steps } = props;
+  const [Terrors, setErrors] = useState({});
   const [personalInfoState, setPInfoState] = useState({
-    firstName: "1",
-    middleName: "12",
+    firstName: "",
+    middleName: "",
     lastName: "",
     dateOfBirth: "",
     country: "",
@@ -75,15 +79,38 @@ function PersonalInfo(props) {
     setPInfoState(event.target.value);
   };
 
-  const submitForm = () => {
-    //validation
-    //send > to api
-    onNext();
-    console.log(personalInfoState);
+  const handleCountryChange = (value) => {
+    setPInfoState({
+      ...personalInfoState,
+      country: value,
+    });
   };
-  //submitform , check if the form is valiated
-  //send the data to the API ( if found)
-  //call On Next
+
+  const validates = () => {
+    const result = validationJOI(personalInfoState);
+
+    if (!result.error) return true;
+    var i = 0;
+    const newObj = {};
+
+    for (let item of result.error.details) {
+      var x = result.error.details[i].path[0];
+
+      newObj[x] = true;
+      i++;
+    }
+    setErrors(newObj);
+    return false;
+  };
+
+  const submitForm = () => {
+    //submitform , check if the form is valiated
+    //send the data to the API ( if found)
+    //call On Next
+    let cont = validates();
+    if (cont === true) onNext();
+    //onNext();
+  };
   return (
     <center>
       <Grid container spacing={0}>
@@ -98,6 +125,8 @@ function PersonalInfo(props) {
             <p className={classes.parag}>Personal Info</p>
             <form className={classes.root} noValidate autoComplete="off">
               <TextField
+                error={"firstName" in Terrors ? true : false}
+                autoFocus
                 className={classes.textFieldAuto}
                 id="outlined-basic"
                 label="First name"
@@ -113,6 +142,7 @@ function PersonalInfo(props) {
 
               <TextField
                 className={classes.textFieldAuto}
+                error={"middleName" in Terrors ? true : false}
                 id="outlined-basic"
                 label="Middle name"
                 variant="outlined"
@@ -126,6 +156,7 @@ function PersonalInfo(props) {
               />
               <TextField
                 className={classes.textFieldAuto}
+                error={"lastName" in Terrors ? true : false}
                 id="outlined-basic"
                 label="Last name"
                 variant="outlined"
@@ -139,6 +170,7 @@ function PersonalInfo(props) {
               />
               <TextField
                 className={classes.textFieldAuto}
+                error={"dateOfBirth" in Terrors ? true : false}
                 id="outlined-basic"
                 label="Date of birth"
                 variant="outlined"
@@ -154,19 +186,17 @@ function PersonalInfo(props) {
                   });
                 }}
               />
-              <TextField
-                className={classes.textFieldAuto}
-                id="outlined-basic"
-                label="Country Citizenship"
+              <FormControl
                 variant="outlined"
+                className={classes.textFieldAuto}
                 size="small"
-                onChange={(e) => {
-                  setPInfoState({
-                    ...personalInfoState,
-                    country: e.target.value,
-                  });
-                }}
-              />
+              >
+                <CountrySelect
+                  error={"country" in Terrors ? true : false}
+                  onC={handleCountryChange}
+                />
+              </FormControl>
+
               <FormControl
                 variant="outlined"
                 className={classes.textFieldAuto}
@@ -179,6 +209,7 @@ function PersonalInfo(props) {
                   Gender
                 </InputLabel>
                 <Select
+                  error={"gender" in Terrors ? true : false}
                   labelId="outlined-label"
                   id="outlined"
                   value={personalInfoState.gender}
@@ -207,6 +238,7 @@ function PersonalInfo(props) {
                   ID Type
                 </InputLabel>
                 <Select
+                  error={"idType" in Terrors ? true : false}
                   labelId="outlined-label"
                   id="outlined"
                   value={personalInfoState.idType}
@@ -228,6 +260,7 @@ function PersonalInfo(props) {
 
               <TextField
                 className={classes.textFieldAuto}
+                error={"idNumber" in Terrors ? true : false}
                 id="outlined-basic"
                 label="ID number"
                 variant="outlined"
@@ -253,6 +286,7 @@ function PersonalInfo(props) {
             <p className={classes.parag}>Contact Info</p>
             <form className={classes.root} noValidate autoComplete="off">
               <TextField
+                error={"mobileNumber" in Terrors ? true : false}
                 className={classes.textFieldAuto}
                 id="outlined-basic"
                 label="Mobile Number"
@@ -267,6 +301,7 @@ function PersonalInfo(props) {
               />
               <TextField
                 className={classes.textFieldAuto}
+                error={"secondMobileNumber" in Terrors ? true : false}
                 id="outlined-basic"
                 label="2nd Mobile No"
                 variant="outlined"
@@ -279,6 +314,7 @@ function PersonalInfo(props) {
                 }}
               />
               <TextField
+                error={"Landline" in Terrors ? true : false}
                 className={classes.textFieldAuto}
                 id="outlined-basic"
                 label="Landline"
@@ -292,6 +328,7 @@ function PersonalInfo(props) {
                 }}
               />
               <TextField
+                error={"email" in Terrors ? true : false}
                 className={classes.textFieldAuto}
                 id="outlined-basic"
                 label="Email address"
@@ -306,6 +343,7 @@ function PersonalInfo(props) {
               />
 
               <TextField
+                error={"RCountry" in Terrors ? true : false}
                 className={classes.textFieldAuto}
                 id="outlined-basic"
                 label="Residence Country"
@@ -319,6 +357,7 @@ function PersonalInfo(props) {
                 }}
               />
               <TextField
+                error={"city" in Terrors ? true : false}
                 className={classes.textFieldAuto}
                 id="outlined-basic"
                 label="City"
@@ -332,6 +371,7 @@ function PersonalInfo(props) {
                 }}
               />
               <TextField
+                error={"street" in Terrors ? true : false}
                 className={classes.textFieldAuto}
                 id="outlined-basic"
                 label="Street"
@@ -345,6 +385,7 @@ function PersonalInfo(props) {
                 }}
               />
               <TextField
+                error={"zipcode" in Terrors ? true : false}
                 className={classes.textFieldAuto}
                 id="outlined-basic"
                 label="Zip/PostalCode"

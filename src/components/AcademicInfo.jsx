@@ -86,6 +86,7 @@ function AcademicInfo(props) {
 
             <form className={classes.root} noValidate autoComplete="off">
               <TextField
+                autoFocus
                 className={classes.textFieldAuto}
                 id="outlined-basic"
                 label="University"

@@ -113,20 +113,18 @@ export default function HorizontalLabelPositionBelowStepper(props) {
 
       <div style={{ marginTop: "15px" }}>
         {activeStep === steps.length ? (
-          <div style={{ minHeight: "15vw" }}>
-            <center>
-              <Paper
-                label="Name"
-                square={false}
-                variant={"outlined"}
-                className={classes.paperC}
-                style={{ marginTop: "10vw" }}
-              >
-                <p>Your form has been submitted</p>
-                <p>We will contact you shortly</p>
-              </Paper>
-            </center>
-          </div>
+          <center>
+            <Paper
+              label="Name"
+              square={false}
+              variant={"outlined"}
+              className={classes.paperC}
+              style={{ marginTop: "10vw" }}
+            >
+              <p>Your form has been submitted</p>
+              <p>We will contact you shortly</p>
+            </Paper>
+          </center>
         ) : (
           <div>
             <div>
