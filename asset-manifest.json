@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/SPU-TaskOne-React/static/css/main.119468c1.chunk.css",
-    "main.js": "/SPU-TaskOne-React/static/js/main.2a4f4ff0.chunk.js",
-    "main.js.map": "/SPU-TaskOne-React/static/js/main.2a4f4ff0.chunk.js.map",
-    "runtime-main.js": "/SPU-TaskOne-React/static/js/runtime-main.53b7d670.js",
-    "runtime-main.js.map": "/SPU-TaskOne-React/static/js/runtime-main.53b7d670.js.map",
-    "static/js/2.1947a199.chunk.js": "/SPU-TaskOne-React/static/js/2.1947a199.chunk.js",
-    "static/js/2.1947a199.chunk.js.map": "/SPU-TaskOne-React/static/js/2.1947a199.chunk.js.map",
-    "index.html": "/SPU-TaskOne-React/index.html",
-    "precache-manifest.c71d8a0f134af8692a353b79a13e6f2d.js": "/SPU-TaskOne-React/precache-manifest.c71d8a0f134af8692a353b79a13e6f2d.js",
-    "service-worker.js": "/SPU-TaskOne-React/service-worker.js",
-    "static/css/main.119468c1.chunk.css.map": "/SPU-TaskOne-React/static/css/main.119468c1.chunk.css.map",
-    "static/js/2.1947a199.chunk.js.LICENSE.txt": "/SPU-TaskOne-React/static/js/2.1947a199.chunk.js.LICENSE.txt",
-    "static/media/BUE-logo.png": "/SPU-TaskOne-React/static/media/BUE-logo.c670f7e3.png",
-    "static/media/BritishFLag.png": "/SPU-TaskOne-React/static/media/BritishFLag.8bc20b0d.png",
-    "static/media/facebook.png": "/SPU-TaskOne-React/static/media/facebook.8f5ce275.png",
-    "static/media/footer.png": "/SPU-TaskOne-React/static/media/footer.b8c1fccc.png",
-    "static/media/instagram.png": "/SPU-TaskOne-React/static/media/instagram.4a8c2347.png",
-    "static/media/signing3.jpg": "/SPU-TaskOne-React/static/media/signing3.4f492bed.jpg"
+    "main.css": "/SPU-TaskOne-React/index.js/static/css/main.119468c1.chunk.css",
+    "main.js": "/SPU-TaskOne-React/index.js/static/js/main.300c8427.chunk.js",
+    "main.js.map": "/SPU-TaskOne-React/index.js/static/js/main.300c8427.chunk.js.map",
+    "runtime-main.js": "/SPU-TaskOne-React/index.js/static/js/runtime-main.72d0e4d0.js",
+    "runtime-main.js.map": "/SPU-TaskOne-React/index.js/static/js/runtime-main.72d0e4d0.js.map",
+    "static/js/2.1947a199.chunk.js": "/SPU-TaskOne-React/index.js/static/js/2.1947a199.chunk.js",
+    "static/js/2.1947a199.chunk.js.map": "/SPU-TaskOne-React/index.js/static/js/2.1947a199.chunk.js.map",
+    "index.html": "/SPU-TaskOne-React/index.js/index.html",
+    "precache-manifest.85da18aebf490c51912e96c44824fd30.js": "/SPU-TaskOne-React/index.js/precache-manifest.85da18aebf490c51912e96c44824fd30.js",
+    "service-worker.js": "/SPU-TaskOne-React/index.js/service-worker.js",
+    "static/css/main.119468c1.chunk.css.map": "/SPU-TaskOne-React/index.js/static/css/main.119468c1.chunk.css.map",
+    "static/js/2.1947a199.chunk.js.LICENSE.txt": "/SPU-TaskOne-React/index.js/static/js/2.1947a199.chunk.js.LICENSE.txt",
+    "static/media/BUE-logo.png": "/SPU-TaskOne-React/index.js/static/media/BUE-logo.c670f7e3.png",
+    "static/media/BritishFLag.png": "/SPU-TaskOne-React/index.js/static/media/BritishFLag.8bc20b0d.png",
+    "static/media/facebook.png": "/SPU-TaskOne-React/index.js/static/media/facebook.8f5ce275.png",
+    "static/media/footer.png": "/SPU-TaskOne-React/index.js/static/media/footer.b8c1fccc.png",
+    "static/media/instagram.png": "/SPU-TaskOne-React/index.js/static/media/instagram.4a8c2347.png",
+    "static/media/signing3.jpg": "/SPU-TaskOne-React/index.js/static/media/signing3.4f492bed.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.53b7d670.js",
+    "static/js/runtime-main.72d0e4d0.js",
     "static/js/2.1947a199.chunk.js",
     "static/css/main.119468c1.chunk.css",
-    "static/js/main.2a4f4ff0.chunk.js"
+    "static/js/main.300c8427.chunk.js"
   ]
 }
