@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/SPU-TaskOne-React/precache-manifest.50c8a44c631a363e79032d54b87f7dea.js"
+  "/SPU-TaskOne-React/precache-manifest.1389bd99cad10d0ae8017902822fc1a3.js"
 );
 
 self.addEventListener('message', (event) => {

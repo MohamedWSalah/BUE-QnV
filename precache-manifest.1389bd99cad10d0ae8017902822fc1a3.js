@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fca5e917354743790ce8c441f3c3c6e0",
+    "revision": "9ad4ba76d69e6dd288985cc4e51c7223",
     "url": "/SPU-TaskOne-React/index.html"
   },
   {
-    "revision": "dd5d17d1143b89c731ab",
+    "revision": "69379f87f1584f6ce92b",
     "url": "/SPU-TaskOne-React/static/css/main.119468c1.chunk.css"
   },
   {
-    "revision": "e10262eb3893fa85f60b",
-    "url": "/SPU-TaskOne-React/static/js/2.cfd9aa05.chunk.js"
+    "revision": "dab403482588d70c2e19",
+    "url": "/SPU-TaskOne-React/static/js/2.1a82a25e.chunk.js"
   },
   {
     "revision": "eb6f6bef9278ab37e70eeefbcf35ebbf",
-    "url": "/SPU-TaskOne-React/static/js/2.cfd9aa05.chunk.js.LICENSE.txt"
+    "url": "/SPU-TaskOne-React/static/js/2.1a82a25e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "dd5d17d1143b89c731ab",
-    "url": "/SPU-TaskOne-React/static/js/main.3d46d680.chunk.js"
+    "revision": "69379f87f1584f6ce92b",
+    "url": "/SPU-TaskOne-React/static/js/main.2c6dc1e4.chunk.js"
   },
   {
     "revision": "677971be04bacc0f3ce5",
