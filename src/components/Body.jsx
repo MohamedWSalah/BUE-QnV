@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles, Grid } from "@material-ui/core";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import Stepper from "@material-ui/core/Stepper";
@@ -7,7 +7,6 @@ import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 
-import Typography from "@material-ui/core/Typography";
 import PersonalInfo from "./PersonalInfo";
 import AcademicInfo from "./AcademicInfo";
 import ProgramSelection from "./ProgramSelection";
@@ -27,11 +26,11 @@ const useStyles = makeStyles((theme) => ({
     color: "red",
   },
   paperC: {
-    width: "20%",
+    width: "40%",
     height: "100%",
+    marginBottom: "10%",
   },
 }));
-
 function getSteps() {
   return ["Personal Information", "Academic Information", "Program Selection"];
 }
@@ -50,6 +49,12 @@ function getStepContent(stepIndex) {
 }
 
 export default function HorizontalLabelPositionBelowStepper(props) {
+  const [generalState, setGeneralState] = useState([]);
+
+  const setComingObj = (obj) => {
+    console.log(obj);
+    generalState.push(obj);
+  };
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
@@ -67,6 +72,10 @@ export default function HorizontalLabelPositionBelowStepper(props) {
     setActiveStep(0);
   };
 
+  const testFunc = () => {
+    console.log(generalState);
+  };
+
   const formRenderNumber = (num) => {
     if (num === 0) {
       return (
@@ -75,6 +84,7 @@ export default function HorizontalLabelPositionBelowStepper(props) {
           onBack={handleBack}
           activeStep={activeStep}
           steps={steps}
+          click={setComingObj}
         />
       );
     }
@@ -85,6 +95,7 @@ export default function HorizontalLabelPositionBelowStepper(props) {
           onBack={handleBack}
           activeStep={activeStep}
           steps={steps}
+          click={setComingObj}
         />
       );
     }
@@ -95,6 +106,7 @@ export default function HorizontalLabelPositionBelowStepper(props) {
           onBack={handleBack}
           activeStep={activeStep}
           steps={steps}
+          click={setComingObj}
         />
       );
     }
@@ -119,7 +131,7 @@ export default function HorizontalLabelPositionBelowStepper(props) {
               square={false}
               variant={"outlined"}
               className={classes.paperC}
-              style={{ marginTop: "10vw" }}
+              style={{ marginTop: "5%" }}
             >
               <p>Your form has been submitted</p>
               <p>We will contact you shortly</p>
@@ -139,6 +151,15 @@ export default function HorizontalLabelPositionBelowStepper(props) {
             </div>
           </div>
         )}
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={testFunc}
+          style={{ backgroundColor: "red" }}
+          endIcon={<ArrowRightIcon />}
+        >
+          Console log the State
+        </Button>
       </div>
     </div>
   );

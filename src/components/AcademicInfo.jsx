@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import DropzoneDialogD from "./Upload";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
-
+import AIvalidation from "./schemas/AISchema";
 import {
   Grid,
   MenuItem,
@@ -50,8 +50,8 @@ const useStyles = makeStyles((theme) => ({
 
 function AcademicInfo(props) {
   const classes = useStyles();
-  const { onNext, onBack, activeStep, steps } = props;
-
+  const { onNext, onBack, activeStep, steps, click } = props;
+  const [Terrors, setErrors] = useState({});
   const [academicInfoState, setAInfo] = useState({
     university: "",
     specialization: "",
@@ -66,9 +66,29 @@ function AcademicInfo(props) {
     setAInfo(event.target.value);
   };
 
+  const validates = () => {
+    const result = AIvalidation(academicInfoState);
+
+    if (!result.error) return true;
+    var i = 0;
+    const newObj = {};
+
+    for (let item of result.error.details) {
+      var x = result.error.details[i].path[0];
+
+      newObj[x] = true;
+      i++;
+    }
+    setErrors(newObj);
+    return false;
+  };
+
   const submitForm = () => {
-    onNext();
-    console.log(academicInfoState);
+    let cont = validates();
+    if (cont === true) {
+      click(academicInfoState);
+      onNext();
+    }
   };
 
   return (
@@ -87,6 +107,7 @@ function AcademicInfo(props) {
             <form className={classes.root} noValidate autoComplete="off">
               <TextField
                 autoFocus
+                error={"university" in Terrors ? true : false}
                 className={classes.textFieldAuto}
                 id="outlined-basic"
                 label="University"
@@ -102,6 +123,7 @@ function AcademicInfo(props) {
 
               <TextField
                 className={classes.textFieldAuto}
+                error={"specialization" in Terrors ? true : false}
                 id="outlined-basic"
                 label="Specialization"
                 variant="outlined"
@@ -115,6 +137,7 @@ function AcademicInfo(props) {
               />
               <TextField
                 className={classes.textFieldAuto}
+                error={"graduationDate" in Terrors ? true : false}
                 id="outlined-basic"
                 label="Graduation Date"
                 variant="outlined"
@@ -132,10 +155,13 @@ function AcademicInfo(props) {
               />
               <TextField
                 className={classes.textFieldAuto}
+                error={"GPA" in Terrors ? true : false}
                 id="outlined-basic"
                 label="GPA"
                 variant="outlined"
                 size="small"
+                type="number"
+                InputProps={{ inputProps: { min: 0, max: 4 } }}
                 onChange={(e) => {
                   setAInfo({
                     ...academicInfoState,
@@ -146,8 +172,11 @@ function AcademicInfo(props) {
 
               <TextField
                 className={classes.textFieldAuto}
+                error={"percentage" in Terrors ? true : false}
                 id="outlined-basic"
                 label="Percentage"
+                type="number"
+                InputProps={{ inputProps: { min: 0, max: 100 } }}
                 variant="outlined"
                 size="small"
                 onChange={(e) => {
@@ -169,6 +198,7 @@ function AcademicInfo(props) {
                   Letter Grade
                 </InputLabel>
                 <Select
+                  error={"letterGrade" in Terrors ? true : false}
                   labelId="outlined-label"
                   id="outlined"
                   value={academicInfoState.gender}
@@ -200,6 +230,7 @@ function AcademicInfo(props) {
                   Highest Level of Education
                 </InputLabel>
                 <Select
+                  error={"highestLevelOfEducation" in Terrors ? true : false}
                   labelId="outlined-label"
                   id="outlined"
                   value={academicInfoState.highestLevelOfEducation}
@@ -314,5 +345,4 @@ function AcademicInfo(props) {
     </center>
   );
 }
-
 export default AcademicInfo;

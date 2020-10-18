@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import DropzoneDialogD from "./Upload";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
-
+import PSvalidation from "./schemas/PSSchema";
 import {
   Grid,
   MenuItem,
@@ -50,21 +50,42 @@ const useStyles = makeStyles((theme) => ({
 
 function ProgramSelection(props) {
   const classes = useStyles();
-  const { onNext, onBack, activeStep, steps } = props;
+  const { onNext, onBack, activeStep, steps, click } = props;
+  const [Terrors, setErrors] = useState({});
 
-  const [programInfoState, setProgramInfo] = useState({
+  const [programSelectionState, setProgramSelectionInfo] = useState({
     faculty: "",
     mastersProgram: "",
     expectedEntryTerm: "",
   });
 
   const handleChange = (event) => {
-    setProgramInfo(event.target.value);
+    setProgramSelectionInfo(event.target.value);
+  };
+
+  const validates = () => {
+    const result = PSvalidation(programSelectionState);
+
+    if (!result.error) return true;
+    var i = 0;
+    const newObj = {};
+
+    for (let item of result.error.details) {
+      var x = result.error.details[i].path[0];
+
+      newObj[x] = true;
+      i++;
+    }
+    setErrors(newObj);
+    return false;
   };
 
   const submitForm = () => {
-    onNext();
-    console.log(programInfoState);
+    let cont = validates();
+    if (cont === true) {
+      click(programSelectionState);
+      onNext();
+    }
   };
 
   return (
@@ -94,13 +115,14 @@ function ProgramSelection(props) {
                     Faculty
                   </InputLabel>
                   <Select
+                    error={"faculty" in Terrors ? true : false}
                     labelId="outlined-label"
                     id="outlined"
-                    value={programInfoState.faculty}
+                    value={programSelectionState.faculty}
                     style={{ width: "100%" }}
                     onChange={(e) => {
-                      setProgramInfo({
-                        ...programInfoState,
+                      setProgramSelectionInfo({
+                        ...programSelectionState,
                         faculty: e.target.value,
                       });
                     }}
@@ -126,13 +148,14 @@ function ProgramSelection(props) {
                     Master's Program
                   </InputLabel>
                   <Select
+                    error={"mastersProgram" in Terrors ? true : false}
                     labelId="outlined-label"
                     id="outlined"
-                    value={programInfoState.mastersProgram}
+                    value={programSelectionState.mastersProgram}
                     style={{ width: "100%" }}
                     onChange={(e) => {
-                      setProgramInfo({
-                        ...programInfoState,
+                      setProgramSelectionInfo({
+                        ...programSelectionState,
                         mastersProgram: e.target.value,
                       });
                     }}
@@ -157,12 +180,13 @@ function ProgramSelection(props) {
                     Expected Entry Term
                   </InputLabel>
                   <Select
+                    error={"expectedEntryTerm" in Terrors ? true : false}
                     labelId="outlined-label"
                     id="outlined"
-                    value={programInfoState.expectedEntryTerm}
+                    value={programSelectionState.expectedEntryTerm}
                     onChange={(e) => {
-                      setProgramInfo({
-                        ...programInfoState,
+                      setProgramSelectionInfo({
+                        ...programSelectionState,
                         expectedEntryTerm: e.target.value,
                       });
                     }}

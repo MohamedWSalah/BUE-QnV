@@ -1,19 +1,22 @@
 import Joi from "joi-browser";
 
-function validationJOI(object) {
+function PIvalidation(object) {
   const schema = {
-    firstName: Joi.string(),
-    middleName: Joi.string(),
-    lastName: Joi.string(),
-    dateOfBirth: Joi.string(),
+    firstName: Joi.string().min(5).max(50).required(),
+    middleName: Joi.string().min(5).max(50).required(),
+    lastName: Joi.string().min(5).max(50).required(),
+    dateOfBirth: Joi.date(),
     country: Joi.string(),
     gender: Joi.string(),
     idType: Joi.string(),
-    idNumber: Joi.string(),
-    mobileNumber: Joi.string(),
-    secondMobileNumber: Joi.string(),
-    Landline: Joi.string(),
-    email: Joi.string(),
+    idNumber: Joi.number().min(10),
+    mobileNumber: Joi.number().min(10),
+    secondMobileNumber: Joi.number().min(10),
+    Landline: Joi.number().min(7),
+    email: Joi.string().email({
+      minDomainSegments: 2,
+      tlds: { allow: ["com", "net"] },
+    }),
     RCountry: Joi.string(),
     city: Joi.string(),
     street: Joi.string(),
@@ -24,4 +27,4 @@ function validationJOI(object) {
   return Joi.validate(object, schema, { abortEarly: false });
 }
 
-export default validationJOI;
+export default PIvalidation;

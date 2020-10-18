@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import DropzoneDialogD from "./Upload";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import Joi, { errors, join } from "joi-browser";
-import validationJOI from "./schemas/PISchema";
+import PIvalidation from "./schemas/PISchema";
 import {
   Grid,
   MenuItem,
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 
 function PersonalInfo(props) {
   const classes = useStyles();
-  const { onNext, onBack, activeStep, steps } = props;
+  const { onNext, onBack, activeStep, steps, click, sendObj } = props;
   const [Terrors, setErrors] = useState({});
   const [personalInfoState, setPInfoState] = useState({
     firstName: "",
@@ -86,27 +86,29 @@ function PersonalInfo(props) {
     });
   };
 
-  // const validates = () => {
-  //   const result = validationJOI(personalInfoState);
+  const validates = () => {
+    const result = PIvalidation(personalInfoState);
 
-  //   if (!result.error) return true;
-  //   var i = 0;
-  //   const newObj = {};
+    if (!result.error) return true;
+    var i = 0;
+    const newObj = {};
+    for (let item of result.error.details) {
+      var x = result.error.details[i].path[0];
 
-  //   for (let item of result.error.details) {
-  //     var x = result.error.details[i].path[0];
-
-  //     newObj[x] = true;
-  //     i++;
-  //   }
-  //   setErrors(newObj);
-  //   return false;
-  // };
+      newObj[x] = true;
+      i++;
+    }
+    setErrors(newObj);
+    alert(result.error.details[0].message);
+    return false;
+  };
 
   const submitForm = () => {
-    // let cont = validates();
-    // if (cont === true) onNext();
-    onNext();
+    let cont = validates();
+    if (cont === true) {
+      click(personalInfoState);
+      onNext();
+    }
   };
   return (
     <center>
