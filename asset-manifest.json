@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/static/css/main.119468c1.chunk.css",
-    "main.js": "/static/js/main.a4aea562.chunk.js",
-    "main.js.map": "/static/js/main.a4aea562.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.6c6054d6.js",
-    "runtime-main.js.map": "/static/js/runtime-main.6c6054d6.js.map",
-    "static/js/2.96145183.chunk.js": "/static/js/2.96145183.chunk.js",
-    "static/js/2.96145183.chunk.js.map": "/static/js/2.96145183.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.6d7711aa16d91a9f72bf1169651c0122.js": "/precache-manifest.6d7711aa16d91a9f72bf1169651c0122.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.119468c1.chunk.css.map": "/static/css/main.119468c1.chunk.css.map",
-    "static/js/2.96145183.chunk.js.LICENSE.txt": "/static/js/2.96145183.chunk.js.LICENSE.txt",
-    "static/media/BUE-logo.png": "/static/media/BUE-logo.c670f7e3.png",
-    "static/media/BritishFLag.png": "/static/media/BritishFLag.8bc20b0d.png",
-    "static/media/facebook.png": "/static/media/facebook.8f5ce275.png",
-    "static/media/footer.png": "/static/media/footer.b8c1fccc.png",
-    "static/media/instagram.png": "/static/media/instagram.4a8c2347.png",
-    "static/media/signing3.jpg": "/static/media/signing3.4f492bed.jpg"
+    "main.css": "/BUE-QnV/static/css/main.dbf57605.chunk.css",
+    "main.js": "/BUE-QnV/static/js/main.ec4d3415.chunk.js",
+    "main.js.map": "/BUE-QnV/static/js/main.ec4d3415.chunk.js.map",
+    "runtime-main.js": "/BUE-QnV/static/js/runtime-main.aa2ed4b8.js",
+    "runtime-main.js.map": "/BUE-QnV/static/js/runtime-main.aa2ed4b8.js.map",
+    "static/js/2.96145183.chunk.js": "/BUE-QnV/static/js/2.96145183.chunk.js",
+    "static/js/2.96145183.chunk.js.map": "/BUE-QnV/static/js/2.96145183.chunk.js.map",
+    "index.html": "/BUE-QnV/index.html",
+    "precache-manifest.e76f6112c9156f480ab20d3e1f12643e.js": "/BUE-QnV/precache-manifest.e76f6112c9156f480ab20d3e1f12643e.js",
+    "service-worker.js": "/BUE-QnV/service-worker.js",
+    "static/css/main.dbf57605.chunk.css.map": "/BUE-QnV/static/css/main.dbf57605.chunk.css.map",
+    "static/js/2.96145183.chunk.js.LICENSE.txt": "/BUE-QnV/static/js/2.96145183.chunk.js.LICENSE.txt",
+    "static/media/BUE-logo.png": "/BUE-QnV/static/media/BUE-logo.c670f7e3.png",
+    "static/media/BritishFLag.png": "/BUE-QnV/static/media/BritishFLag.8bc20b0d.png",
+    "static/media/facebook.png": "/BUE-QnV/static/media/facebook.8f5ce275.png",
+    "static/media/footer.png": "/BUE-QnV/static/media/footer.b8c1fccc.png",
+    "static/media/instagram.png": "/BUE-QnV/static/media/instagram.4a8c2347.png",
+    "static/media/signing3.jpg": "/BUE-QnV/static/media/signing3.4f492bed.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.6c6054d6.js",
+    "static/js/runtime-main.aa2ed4b8.js",
     "static/js/2.96145183.chunk.js",
-    "static/css/main.119468c1.chunk.css",
-    "static/js/main.a4aea562.chunk.js"
+    "static/css/main.dbf57605.chunk.css",
+    "static/js/main.ec4d3415.chunk.js"
   ]
 }
